@@ -1,0 +1,27 @@
+require("dotenv").config()
+
+const express = require("express")
+
+const app = express()
+
+const mongoose = require('mongoose')
+
+require("./db/conn")
+
+const user = require('./models/userSchema')
+
+const cors = require('cors')
+
+const router = require('./Routes/route')
+
+const port = 4000
+
+app.use(cors())
+
+app.use(express.json())
+
+app.use(router)
+
+app.listen(port,()=>{
+   console.log(`listening to port no ${port}`);
+})
